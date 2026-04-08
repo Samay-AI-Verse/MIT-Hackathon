@@ -1,6 +1,6 @@
 ---
 title: PharmaSim OpenEnv
-emoji: ??
+emoji: 💊
 colorFrom: blue
 colorTo: green
 sdk: docker
