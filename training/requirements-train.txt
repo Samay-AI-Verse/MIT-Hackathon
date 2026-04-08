@@ -1,0 +1,5 @@
+trl
+vllm==0.6.2
+bitsandbytes
+trackio
+datasets

@@ -33,6 +33,21 @@ You can interact with our live environment API hosted directly on Hugging Face S
 
 ---
 
+## 🚀 Advanced Reinforcement Learning Pipeline (GRPO via TRL)
+
+To elevate this submission from a simple environment to a breakthrough training platform, we have integrated a **Group Relative Policy Optimization (GRPO)** training pipeline using Transformers Reinforcement Learning (TRL) and vLLM.
+
+Instead of writing rule-based logic or doing few-shot prompting, a lightweight open-source agent (like `Qwen-1.5B`) uses the `training/train_grpo.py` pipeline to **literally teach itself** how to be a pharmacist through pure trial, error, and mathematical reinforcement. 
+
+This sets our implementation completely apart and demonstrates a capability perfectly parallel to the official Meta OpenEnv examples:
+1. The agent chooses a dispensing action in strict JSON format.
+2. It interacts natively with the PharmaSim validation boundary.
+3. It receives mathematical reward feedback (0.0 to 1.0) and uses `vLLM` within `TRL`'s rollout functions to rapidly optimize its policy gradients.
+
+*Check out `training/train_grpo.py` to see the cutting-edge pipeline in action!*
+
+---
+
 ## Innovation Hooks (Why this benchmark stands out)
 
 - **Deterministic Sandbox**: Unlike typical text-based role-play games, PharmaSim has a rigid, mathematically proven risk-scoring engine. The `graders` calculate exact scores `[0.0, 1.0]` based on the sequence of actions.
