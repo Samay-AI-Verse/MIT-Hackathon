@@ -5,27 +5,27 @@ authors:
 description: Deterministic pharmacy operations environment for evaluating AI medication-dispensing decisions.
 openenv_version: "1.0"
 entrypoint:
-  module: pharmasim.env.pharmasim_env
+  module: env.pharmasim_env
   class: PharmaSimEnv
 interface:
   step:
-    input: pharmasim.env.models.Action
+    input: env.models.Action
     output:
-      observation: pharmasim.env.models.Observation
-      reward: pharmasim.env.models.Reward
+      observation: env.models.Observation
+      reward: env.models.Reward
       done: bool
       info: dict
   reset:
-    output: pharmasim.env.models.Observation
+    output: env.models.Observation
   state:
     output: dict
-observation_schema: pharmasim.env.models.Observation
-action_schema: pharmasim.env.models.Action
-reward_schema: pharmasim.env.models.Reward
+observation_schema: env.models.Observation
+action_schema: env.models.Action
+reward_schema: env.models.Reward
 tasks:
-  - pharmasim.tasks.task_easy
-  - pharmasim.tasks.task_medium
-  - pharmasim.tasks.task_hard
+  - tasks.task_easy
+  - tasks.task_medium
+  - tasks.task_hard
 deployment:
   type: docker
   healthcheck: /

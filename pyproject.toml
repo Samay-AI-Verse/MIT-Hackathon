@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pharmasim"
+version = "1.0.0"
+description = "PharmaSim OpenEnv Benchmark"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic",
+    "fastapi",
+    "uvicorn",
+    "openai",
+    "python-dotenv"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["env*", "tasks*", "graders*"]

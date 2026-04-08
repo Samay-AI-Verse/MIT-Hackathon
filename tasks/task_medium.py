@@ -1,5 +1,5 @@
-from pharmasim.env.models import PatientInfo, PrescriptionItem
-from pharmasim.env.scenario_logic import build_initial_state, step_scenario
+from env.models import PatientInfo, PrescriptionItem
+from env.scenario_logic import build_initial_state, step_scenario
 
 
 TASK_CONFIG = {

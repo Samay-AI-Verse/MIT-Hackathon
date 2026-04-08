@@ -6,12 +6,12 @@ from fastapi import FastAPI, HTTPException
 ROOT = Path(__file__).resolve().parent
 PARENT = ROOT.parent
 if str(PARENT) not in sys.path:
-    sys.path.insert(0, str(PARENT))
+    sys.path.insert(0, str(ROOT))
 
-from pharmasim.env.models import Action
-from pharmasim.env.pharmasim_env import PharmaSimEnv
-from pharmasim.env.utils import serialize_model
-from pharmasim.tasks import TASK_REGISTRY
+from env.models import Action
+from env.pharmasim_env import PharmaSimEnv
+from env.utils import serialize_model
+from tasks import TASK_REGISTRY
 
 app = FastAPI(title="PharmaSim", version="1.0.0")
 CURRENT_TASK = "easy"

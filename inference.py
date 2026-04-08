@@ -10,15 +10,15 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parent
 PARENT = ROOT.parent
 if str(PARENT) not in sys.path:
-    sys.path.insert(0, str(PARENT))
+    sys.path.insert(0, str(ROOT))
 
 load_dotenv()
 
-from pharmasim.env.models import Action
-from pharmasim.env.pharmasim_env import PharmaSimEnv
-from pharmasim.env.utils import serialize_model
-from pharmasim.graders import grader_easy, grader_hard, grader_medium
-from pharmasim.tasks import task_easy, task_hard, task_medium
+from env.models import Action
+from env.pharmasim_env import PharmaSimEnv
+from env.utils import serialize_model
+from graders import grader_easy, grader_hard, grader_medium
+from tasks import task_easy, task_hard, task_medium
 
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o")
