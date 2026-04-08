@@ -13,9 +13,13 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "openai",
-    "python-dotenv"
+    "python-dotenv",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["env*", "tasks*", "graders*"]
+include = ["env*", "tasks*", "graders*", "server*"]
