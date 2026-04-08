@@ -5,11 +5,14 @@ import sys
 from pathlib import Path
 
 from openai import OpenAI
+from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent
 PARENT = ROOT.parent
 if str(PARENT) not in sys.path:
     sys.path.insert(0, str(PARENT))
+
+load_dotenv()
 
 from pharmasim.env.models import Action
 from pharmasim.env.pharmasim_env import PharmaSimEnv
@@ -19,7 +22,13 @@ from pharmasim.tasks import task_easy, task_hard, task_medium
 
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or os.getenv("HF_TOKEN")
+HF_TOKEN = os.getenv("HF_TOKEN")
+
+# Optional - if you use from_docker_image():
+LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
+
+# Internal mapping for the client builder script
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY") or HF_TOKEN
 TEMPERATURE = 0.0
 MAX_TOKENS = 160
 MAX_STEPS = 5
