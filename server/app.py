@@ -4,9 +4,9 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 
 ROOT = Path(__file__).resolve().parent
-PARENT = ROOT.parent
-if str(PARENT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+PROJECT_ROOT = ROOT.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from env.models import Action
 from env.pharmasim_env import PharmaSimEnv
@@ -71,3 +71,10 @@ def step(action: Action):
 @app.get("/state")
 def state():
     return ENV.state()
+
+def main():
+    import uvicorn
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()
