@@ -79,8 +79,9 @@ def fallback_action(observation, step_index: int) -> Action:
             break
 
     if invalid_items:
-        if step_index == 0 and observation.urgency == "high" and "difficult to verify" in (observation.notes or "").lower():
-            return Action(action_type="request_info", reason="Need to validate unsafe ambiguous order.")
+        # For urgent, explicitly unsafe/invalid orders, immediate rejection is the safest action.
+        if step_index == 0 and observation.urgency == "high":
+            return Action(action_type="reject", reason="Urgent and unsafe/invalid prescription item present.")
         return Action(action_type="reject", reason="Invalid or high-risk prescription item.")
 
     if in_stock_primary:
