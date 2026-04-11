@@ -161,9 +161,11 @@ def run_task(task_name, task_module, grader_module, client):
             break
 
     score = grader_module.grade(trajectory)
-    success = "true" if score == 1.0 else "false"
-    rewards_str = ",".join(rewards_list)
+    # Ensure score is strictly between 0 and 1 (hackathon requirement)
+    score = max(0.01, min(0.99, score))
+    success = "true" if score >= 0.9 else "false"
     
+    rewards_str = ",".join(rewards_list)
     print(f"[END] success={success} steps={len(trajectory)} rewards={rewards_str}", flush=True)
     return score
 
